@@ -21,6 +21,8 @@ public:
   arma::rowvec getRow(int);  //get a row vector, 0-based
   arma::colvec getCol(int);  //get a col vector, 0-based
   
+  arma::rowvec getIndex(std::string);  //get the vector of a word
+  
   bool save();  //this funciton can write the wordlist into a binary file
   bool read();  //this function can read a wordlist from a binary file
 };

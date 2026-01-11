@@ -1,3 +1,6 @@
+#include "../include/WordList.h"
+#include "../include/Embedding.h"
+
 #include <armadillo>
 #include <iostream>
 

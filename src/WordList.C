@@ -31,3 +31,9 @@ bool WordList::read() {
   in.close();
   return true;
 }
+
+arma::rowvec WordList::getIndex(std::string search){
+  for(int i=0;i<W.size();i++){
+    if(W[i]==search)return getRow(i);
+  }// noted that we don't tackle the exception, when the word isn't in the wordlist, the program crash
+}
