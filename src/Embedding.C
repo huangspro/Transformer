@@ -3,17 +3,21 @@
 #include<string>
 #include<cmath>
 #include<iostream>
-Embedding::Embedding(WordList* w):input_length(0),w(w){}
+Embedding::Embedding(WordList* w):input_length(0),w(w){
+  input = arma::mat();
+  output = arma::mat();
+  positional = arma::mat();
+}
 
 arma::mat Embedding::load_input(std::vector<std::string>& I){
   input_length=I.size();
-  std::cout<<"::"<<input_length<<std::flush;
-  //positional = output = input = arma::mat(input_length, Embedding_Depth);
-  /*
+  input = arma::mat(input_length, Embedding_Depth);
+  positional = arma::mat(input_length, Embedding_Depth);
+  output = arma::mat(input_length, Embedding_Depth);
   for(int i=0;i<input_length;i++){
-    //std::cout<<i<<std::flush;
-    //input.row(i)=w->getIndex(I[i]);
-  }*/
+    std::cout<<i<<std::flush;
+    input.row(i)=w->getIndex(I[i]);
+  }
 }
 
 void Embedding::PositionalEncoding(){
