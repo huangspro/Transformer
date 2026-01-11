@@ -14,7 +14,7 @@ public:
   arma::mat input,output,positional;
   WordList* w;  //use the wordlist from outside, and pass the gradient to the wordlist
   
-  Embedding(int);
+  Embedding(WordList*);
   arma::mat load_input(std::vector<std::string>&);  //read the input data and output the matrix
   void PositionalEncoding();  //implement positional encoding for the matrix and return the result matrix, shaping the same
   void output_with_posi();  //assign the output with the addition of positional encoding matrix and embedding matrix

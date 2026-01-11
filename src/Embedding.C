@@ -2,15 +2,18 @@
 #include<vector>
 #include<string>
 #include<cmath>
-
-Embedding::Embedding(int l):input_length(l){
-  positional = output = input = arma::mat(input_length, Embedding_Depth);
-}
+#include<iostream>
+Embedding::Embedding(WordList* w):input_length(0),w(w){}
 
 arma::mat Embedding::load_input(std::vector<std::string>& I){
-  for(int i=0;i<I.size();i++){
-    input.row(i)=w->getIndex(I[i]);
-  }
+  input_length=I.size();
+  std::cout<<"::"<<input_length<<std::flush;
+  //positional = output = input = arma::mat(input_length, Embedding_Depth);
+  /*
+  for(int i=0;i<input_length;i++){
+    //std::cout<<i<<std::flush;
+    //input.row(i)=w->getIndex(I[i]);
+  }*/
 }
 
 void Embedding::PositionalEncoding(){
@@ -23,5 +26,5 @@ void Embedding::PositionalEncoding(){
 }
 
 void Embedding::output_with_posi(){
-  output = input + positional;
+  output = input + positional(10);
 }

@@ -1,4 +1,4 @@
 //the depth of the embedding
-#define Embedding_Depth 500
+#define Embedding_Depth 10
 
 #include <armadillo>
