@@ -11,9 +11,10 @@ This file defines the embedding layer in transformer
 class Embedding{
 public:
   int input_length;
-  WordList 
+  WordList* w;  //use the wordlist from outside, and pass the gradient to the wordlist
+  
   Embedding(int);
-  aram::mat load_input(arma::vec);  //read the input data and output the matrix
-}
+  arma::mat load_input(arma::vec);  //read the input data and output the matrix
+};
 
 #endif

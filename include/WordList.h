@@ -14,9 +14,9 @@ class WordList{
 public:
   int word_number;  
   arma::mat V; //all the wordlist, shape: ---> word_number * Embedding_Depth
-  vector<string> W;  //the real string of a word
+  std::vector<std::string> W;  //the real string of a word
   
-  WordList(std::Vector<string>&);  //initialize the matrix into E and copy input into W
+  WordList(std::vector<std::string>&);  //initialize the matrix into E and copy input into W
   
   arma::rowvec getRow(int);  //get a row vector, 0-based
   arma::colvec getCol(int);  //get a col vector, 0-based
