@@ -1,3 +1,0 @@
-/home/hhy/hhy-data/my-data/c++/Transformer/build/CMakeFiles/Transformer.dir
-/home/hhy/hhy-data/my-data/c++/Transformer/build/CMakeFiles/edit_cache.dir
-/home/hhy/hhy-data/my-data/c++/Transformer/build/CMakeFiles/rebuild_cache.dir
