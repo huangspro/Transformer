@@ -11,7 +11,7 @@ using namespace std;
 int main() {
     
     
-    vector<string> w={"a","b","c","d","e"};
+    vector<string> w={"a","b","c","d","e","f","g","h","i","j"};
     WordList* W = new WordList(w);
     Embedding E(W);
     vector<string> in={"a","b","c","d","e","a"};
