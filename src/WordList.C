@@ -1,5 +1,4 @@
 #include "../include/WordList.h"
-#include<fstream>
 
 WordList::WordList(std::vector<std::string>& input):word_number(input.size()){
   V = arma::eye<arma::mat>(word_number, Embedding_Depth); //initialize the matrix

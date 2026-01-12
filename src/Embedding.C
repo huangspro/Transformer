@@ -1,8 +1,5 @@
 #include "../include/Embedding.h"
-#include<vector>
-#include<string>
-#include<cmath>
-#include<iostream>
+
 Embedding::Embedding(WordList* w):input_length(0),w(w){
   input = arma::mat(0,0);
   output = arma::mat(0,0);

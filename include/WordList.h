@@ -7,8 +7,6 @@ noted that this class can be trained
 #define _WORDLIST_H_
 
 #include "Parameters.h"
-#include<string>
-#include<vector>
 
 class WordList{
 public:
