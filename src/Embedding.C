@@ -4,9 +4,9 @@
 #include<cmath>
 #include<iostream>
 Embedding::Embedding(WordList* w):input_length(0),w(w){
-  input = arma::mat();
-  output = arma::mat();
-  positional = arma::mat();
+  input = arma::mat(0,0);
+  output = arma::mat(0,0);
+  positional = arma::mat(0,0);
 }
 
 arma::mat Embedding::load_input(std::vector<std::string>& I){
@@ -14,10 +14,10 @@ arma::mat Embedding::load_input(std::vector<std::string>& I){
   input = arma::mat(input_length, Embedding_Depth);
   positional = arma::mat(input_length, Embedding_Depth);
   output = arma::mat(input_length, Embedding_Depth);
-  for(int i=0;i<input_length;i++){
-    std::cout<<i<<std::flush;
-    input.row(i)=w->getIndex(I[i]);
-  }
+  //for(int ii=0;ii<input_length;ii++){
+    std::cout<<input_length<<std::flush;
+    //input.row(i)=w->getIndex(I[i]);
+  //}
 }
 
 void Embedding::PositionalEncoding(){
@@ -30,5 +30,5 @@ void Embedding::PositionalEncoding(){
 }
 
 void Embedding::output_with_posi(){
-  output = input + positional(10);
+  output = input + positional;
 }
