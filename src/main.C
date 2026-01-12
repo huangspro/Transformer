@@ -17,7 +17,7 @@ int main() {
     vector<string> in={"a","b","c","d","e","a"};
     
     E.load_input(in);
-    //E.PositionalEncoding();
-    //E.output_with_posi();
+    E.PositionalEncoding();
+    E.output_with_posi();
     E.output.print();
 }

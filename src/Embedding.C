@@ -15,7 +15,6 @@ void Embedding::load_input(std::vector<std::string>& I){
   positional = arma::mat(input_length, Embedding_Depth);
   output = arma::mat(input_length, Embedding_Depth);
   for(int ii=0;ii<input_length;ii++){
-    std::cout<<ii<<std::flush;
     input.row(ii)=w->getIndex(I[ii]);
   }
 }
