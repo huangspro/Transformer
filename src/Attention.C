@@ -39,7 +39,7 @@ void Attention::cal_output(){
     dimension_sqrt.push_back(std::sqrt(Embedding_Depth/Attention_Head));  //prepare the sqrt of dimension of querys and keys
   }
   
-  arma::mat result;
+  arma::mat result(input.n_rows,0);
   for(int i=0;i<Attention_Head;i++){
     //compute the q,k,v
     q[i] = input * q_gen[i];
@@ -53,7 +53,7 @@ void Attention::cal_output(){
     output[i] = tem[i]*v[i];
     
     //join the output
-    if(i!=0)result = atma::join_horiz(output[i],[i-1]);
+    result = arma::join_horiz(result,output[i]);
   }
   output=output*output_join;
 }

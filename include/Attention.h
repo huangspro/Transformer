@@ -6,7 +6,8 @@
 class Attention{
 public:
   //respectively for generating Query, Key, Value, storing output and output, and joining all the output 
-  std::vector<arma::mat> input, q_gen, k_gen, v_gen, output,output_join;
+  std::vector<arma::mat> q_gen, k_gen, v_gen;
+  arma::mat input, output_join,output;
   
   Attention();
   void load_input(arma::mat); //load input data from the previous embedding layer
