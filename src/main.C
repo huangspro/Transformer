@@ -2,6 +2,7 @@
 #include "../include/Embedding.h"
 #include "../include/Attention.h"
 #include "../include/Parameters.h"
+#include "../include/Normalization.h"
 
 using namespace std;
 
@@ -13,15 +14,17 @@ int main() {
     //embedding
     Embedding E(W);
     //attention
-    Attention A;
+    Attention A(false);
+    Normalization N;
     
-    vector<string> in={"a","b","c","d","e","a"};
+    vector<string> in={"a","b","c"};
     E.load_input(in);
     E.PositionalEncoding();
     E.output_with_posi();
     
     A.load_input(E.output);
     A.cal_output();
-    cout<<A.output.n_rows<<" "<<A.output.n_cols;
-    A.output.print();
+    
+    N.load_input(E.output, A.output);
+    N.cal_output();
 }
