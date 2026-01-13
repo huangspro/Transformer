@@ -9,8 +9,6 @@ void Normalization::load_input(arma::mat x, arma::mat subx){
 
 void Normalization::cal_output(){
   output = x+subx;
-  //output.print();
-  std::cout<<"ppp";
   for(int i=0; i<output.n_rows; i++){
     arma::rowvec row = output.row(i);
     double mean = arma::mean(row);          // mean
@@ -18,5 +16,4 @@ void Normalization::cal_output(){
     row = (row - mean) / std::sqrt(variance + 1e-5);  // normalize
     output.row(i) = row;
   }
-  //output.print();
 }

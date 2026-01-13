@@ -10,13 +10,13 @@ CXXFLAGS = -O2 -w -std=c++11
 LIBS = -larmadillo
 
 # Source files
-SRCS = Attention.C Embedding.C main.C Normalization.C WordList.C
+SRCS = Attention.C Embedding.C Normalization.C WordList.C FFN.C main.C
 
 # Object files (replace .C with .o)
 OBJS = $(SRCS:.C=.o)
 
 # Executable name
-TARGET = my_program
+TARGET = main
 
 # Default target
 all: $(TARGET)

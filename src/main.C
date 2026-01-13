@@ -3,6 +3,7 @@
 #include "../include/Attention.h"
 #include "../include/Parameters.h"
 #include "../include/Normalization.h"
+#include "../include/FFN.h"
 
 using namespace std;
 
@@ -24,7 +25,14 @@ int main() {
     
     A.load_input(E.output);
     A.cal_output();
+    A.output.print();
     
     N.load_input(E.output, A.output);
     N.cal_output();
+    N.output.print();
+    
+    FFN FF;
+    FF.load_input(N.output);
+    FF.cal_output();
+    FF.output.print();
 }
