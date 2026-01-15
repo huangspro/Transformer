@@ -1,6 +1,6 @@
 #include "../include/Attention.h"
 
-Attention::Attention(bool m):is_masked(m){
+Attention::Attention(bool m, int mode):is_masked(m), mode(mode){
   for(int i=0;i<Attention_Head;i++){
     q_gen.push_back(arma::randn<arma::mat>(Embedding_Depth, Embedding_Depth/Attention_Head));
     k_gen.push_back(arma::randn<arma::mat>(Embedding_Depth, Embedding_Depth/Attention_Head));
@@ -9,11 +9,15 @@ Attention::Attention(bool m):is_masked(m){
   output_join = arma::randn<arma::mat>(Embedding_Depth, Embedding_Depth);
 }
 
+void Attention::load_input(arma::mat EN, arma::mat DE){
+  EN=EN;
+  DE=DE;
+  output = arma::randn<arma::mat>(input.n_rows, 0);
+}
 void Attention::load_input(arma::mat I){
   input = I;
   output = arma::randn<arma::mat>(input.n_rows, 0);
 }
-
 //this function is for computing the sofemax of a vecgtor, for row vector
 void Softmax(arma::mat& in){
   for(int ii=0;ii<in.n_rows;ii++){
@@ -29,23 +33,28 @@ void Softmax(arma::mat& in){
 
 void Attention::cal_output(){
   //prepare
-  std::vector<arma::mat> q,k,v,tem,tem_output;
+  std::vector<arma::mat>q,k,v,tem,tem_output;
   std::vector<double> dimension_sqrt;
   for(int i=0;i<Attention_Head;i++){
     tem.push_back(arma::mat(input.n_rows, input.n_rows));  
+    tem_output.push_back(arma::mat(input.n_rows, Embedding_Depth/Attention_Head));
     q.push_back(arma::mat(input.n_rows, Embedding_Depth/Attention_Head));
     k.push_back(arma::mat(input.n_rows, Embedding_Depth/Attention_Head));
     v.push_back(arma::mat(input.n_rows, Embedding_Depth/Attention_Head));
-    tem_output.push_back(arma::mat(input.n_rows, Embedding_Depth/Attention_Head));
     dimension_sqrt.push_back(std::sqrt(Embedding_Depth/Attention_Head));  //prepare the sqrt of dimension of querys and keys
   }
   
   for(int i=0;i<Attention_Head;i++){
-    //compute the q,k,v
-    q[i] = input * q_gen[i];
-    k[i] = input * k_gen[i];
-    v[i] = input * v_gen[i];
-  
+    if(mode==2){
+      //compute the q,k,v
+      q[i] = EN * q_gen[i];
+      k[i] = EN * k_gen[i];
+      v[i] = DE * v_gen[i];
+    }else{
+      q[i] = input * q_gen[i];
+      k[i] = input * k_gen[i];
+      v[i] = output * v_gen[i];
+    }
     //compute q*k^T
     tem[i] = q[i]*k[i].t()/dimension_sqrt[i];
     

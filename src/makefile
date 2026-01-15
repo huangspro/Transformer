@@ -10,7 +10,7 @@ CXXFLAGS = -O2 -w -std=c++11
 LIBS = -larmadillo
 
 # Source files
-SRCS = Attention.C Embedding.C Normalization.C WordList.C FFN.C main.C
+SRCS = Output.C Attention.C Embedding.C Normalization.C WordList.C FFN.C main.C
 
 # Object files (replace .C with .o)
 OBJS = $(SRCS:.C=.o)
