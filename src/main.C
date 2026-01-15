@@ -44,7 +44,7 @@ int main() {
     A_de.load_input(E_de.output);
     A_de.cal_output();
     
-    N_en_1.load_input(A_en.output,E_en.output);
+    /*N_en_1.load_input(A_en.output,E_en.output);
     N_en_1.cal_output();
     N_de_1.load_input(A_de.output,E_de.output);
     N_en_1.cal_output();
@@ -65,5 +65,5 @@ int main() {
     O.load_input(A.output);
     O.cal_output();
     
-    O.output.print();
+    O.output.print();*/
 }
