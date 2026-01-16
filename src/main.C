@@ -19,9 +19,8 @@ int main() {
     Embedding E_en(W);
     Embedding E_de(W);
     //attention
-    Attention A_en(false, 1);
-    Attention A_de(true, 1);
-    Attention A(false, 2);
+    Attention A_en(false);
+    Attention A_de(true);
     //Normalizetion
     Normalization N_en_1,N_de_1,N_en_2,N_de_2;
     //ffn
